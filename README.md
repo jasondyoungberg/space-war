@@ -7,6 +7,6 @@
 ## Prerequisites
 * [**Node.js**](https://nodejs.org/en/download/package-manager/)
 
-## How to start
+## How to use
 Start `server.js`    
 Open a web browser, and navigate to [localhost:80](http://localhost:80/) to access the website

@@ -34,6 +34,11 @@ ws_server.on('request',req=>{
 	var con = req.accept('space-war',req.origin);
 	console.log('connected');
 
+	con.sendUTF(JSON.stringify({
+		type:"welcome",
+		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
+	}));
+
 	con.on('message',msg=>{
 		console.log('mess')
 		if(msg.type==='utf8'){

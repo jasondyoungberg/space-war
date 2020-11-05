@@ -1,0 +1,12 @@
+[
+	{
+		"name":"Name1",
+		"speed":1,
+		"attack":1,
+		"health":1,
+		"shield":1,
+		"regen":1,
+		"battery":1,
+		"reactor":1
+	}
+]

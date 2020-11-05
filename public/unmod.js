@@ -1,14 +1,21 @@
 //Attach all needed modules to window
 import * as THREE from '/lib/three.js';
+
 import * as Model from '/helper/model.js';
 //import * as player from '/helper/player.js';
+
 import * as Menu from '/Menu.js';
+import * as Single from '/single.js';
 
 window.THREE = THREE;
+
 window.Model = Model;
 //window.player = player;
+
+window.Single = Single;
 window.Menu = Menu;
 
+//Temporary
 window.specs = [
 	{
 		"name":"Name1",

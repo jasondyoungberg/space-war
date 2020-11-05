@@ -1,5 +1,6 @@
 var width,height,hud,pi,deg,rad,sin,atan2,rand,floor,mod,stats,renderer,scene,camera,t,mode,key,mouse;
 function load(){
+	Socket.connect();
 	{//useful
 		width = window.innerWidth;
 		height = window.innerHeight;

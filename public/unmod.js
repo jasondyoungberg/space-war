@@ -17,136 +17,147 @@ window.Socket = Socket;
 window.Single = Single;
 window.Menu = Menu;
 
+function random(){
+	let u = 0, v = 0;
+	while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+	while(v === 0) v = Math.random();
+	let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+	num = num / 10.0 + 0.5; // Translate to 0 -> 1
+	num = Math.round((160*num)-30);
+	if (num > 100 || num < 0) return random(); // resample between 0 and 1
+	return num;
+}
+
 //Temporary
 window.specs = [
 	{
-		"name":"Name1",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name2",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name3",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name4",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name5",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name6",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name7",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name8",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name9",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name10",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name11",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name12",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 	{
-		"name":"Name13",
-		"speed":Math.floor(101*Math.random()),
-		"attack":Math.floor(101*Math.random()),
-		"health":Math.floor(101*Math.random()),
-		"shield":Math.floor(101*Math.random()),
-		"regen":Math.floor(101*Math.random()),
-		"battery":Math.floor(101*Math.random()),
-		"reactor":Math.floor(101*Math.random())
+		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),
+		"speed":random(),
+		"attack":random(),
+		"health":random(),
+		"shield":random(),
+		"regen":random(),
+		"battery":random(),
+		"reactor":random()
 	},
 ]

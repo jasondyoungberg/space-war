@@ -9,4 +9,4 @@
 
 ## How to use
 Start `server.js`    
-Open a web browser, and navigate to [localhost:80](http://localhost:80/) to access the website
+Open a web browser, and navigate to [localhost](http://localhost/) to access the website

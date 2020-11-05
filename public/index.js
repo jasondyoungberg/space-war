@@ -149,7 +149,7 @@ function load(){
 		stats.end();
 	}
 	ready_loop = setInterval(()=>{//wait until everything is loaded
-		if(model.ready){
+		if(Model.ready){
 			mode = 'menu';
 			Menu.init();
 			render();

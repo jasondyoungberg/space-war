@@ -1,11 +1,11 @@
 //Attach all needed modules to window
 import * as THREE from '/lib/three.js';
-import * as model from '/helper/model.js';
+import * as Model from '/helper/model.js';
 //import * as player from '/helper/player.js';
 import * as Menu from '/Menu.js';
 
 window.THREE = THREE;
-window.model = model;
+window.Model = Model;
 //window.player = player;
 window.Menu = Menu;
 

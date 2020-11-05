@@ -1,12 +1,12 @@
 import * as THREE from '/lib/three.js';
-import * as model from '/helper/model.js';
+import * as Model from '/helper/model.js';
 var sky,selected,light,type,color,rot,dom;
 const size = 5;
 export var mode;
 export function init(){//When mode is switched to menu
 	mode = 'menu';rot=0;
 	{//basic elements
-		sky = model.sky(1000);
+		sky = Model.sky(1000);
 		light = new THREE.PointLight(0xffffff,2);
 		//light = new THREE.AmbientLight(0xffffff,1);
 	}
@@ -22,10 +22,10 @@ export function init(){//When mode is switched to menu
 			position:0
 		}
 		for(var i=-size;i<=size;i++){
-			type.models[i]=model.ship(color.selected,mod(type.selected+i,13));
-			color.models[i]=model.ship(mod(color.selected+i,8),type.selected);
+			type.models[i]=Model.ship(color.selected,mod(type.selected+i,13));
+			color.models[i]=Model.ship(mod(color.selected+i,8),type.selected);
 		}
-		selected = model.ship(0,0);
+		selected = Model.ship(0,0);
 	}
 	{//set position and rotation of all objects
 		camera.position.set(0,0,0);
@@ -167,10 +167,10 @@ export function update(){
 		}
 	}
 	{//set new models
-		selected = model.ship(color.selected,type.selected);
+		selected = Model.ship(color.selected,type.selected);
 		for(var i=-size;i<=size;i++){
-			type.models[i]=model.ship(color.selected,mod(type.selected+i,13));
-			color.models[i]=model.ship(mod(color.selected+i,8),type.selected);
+			type.models[i]=Model.ship(color.selected,mod(type.selected+i,13));
+			color.models[i]=Model.ship(mod(color.selected+i,8),type.selected);
 		}
 	}
 	{//add new models

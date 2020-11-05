@@ -155,7 +155,7 @@ export var button = {
 
 	},
 	single:()=>{
-		
+		mode = 'single';
 	}
 }
 export function update(){

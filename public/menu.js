@@ -2,7 +2,7 @@ import * as THREE from '/lib/three.js';
 import * as Model from '/helper/model.js';
 
 var sky,selected,light,type,color,rot,dom;
-const size = 5;
+const size = 8;
 export var mode;
 export function init(){//When mode is switched to menu
 	mode = 'menu';rot=0;

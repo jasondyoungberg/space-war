@@ -1,0 +1,5 @@
+{
+	"https":false,
+	"ports":[80],
+	"validate-actions":false
+}

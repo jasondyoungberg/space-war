@@ -2,6 +2,7 @@ const ws = require('ws');
 const mimelite = require('mime/lite');
 const http = require('http');
 const fs = require('fs');
+const config = JSON.parse(fs.readFileSync('config.json'))
 
 //webserver
 var http_server = http.createServer((req,res)=>{
@@ -18,9 +19,9 @@ var http_server = http.createServer((req,res)=>{
 			res.end();
 		}
 	});
-})
+});
 
-http_server.listen(80);
+http_server.listen(config.port);
 
 ws_server = new ws.Server({noServer:true});
 

@@ -1,4 +1,4 @@
-const ws = require('websocket');
+const ws = require('ws');
 const mimelite = require('mime/lite');
 const http = require('http');
 const fs = require('fs');
@@ -22,32 +22,26 @@ var http_server = http.createServer((req,res)=>{
 
 http_server.listen(80);
 
-ws_server = new ws.server({
-	httpServer:http_server,
-	autoAcceptConnections:true
-});
+ws_server = new ws.Server({noServer:true});
 
 var clients = []
 
-ws_server.on('request',req=>{
-	console.log(req.origin);
-	var con = req.accept('space-war',req.origin);
-	console.log('connected');
+ws_server.on('connection',con=>{
+	console.log('ws');
 
-	con.sendUTF(JSON.stringify({
+	con.send(JSON.stringify({
 		type:"welcome",
 		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
 	}));
 
 	con.on('message',msg=>{
-		console.log('mess')
-		if(msg.type==='utf8'){
-			console.log(msg.utf8Data);
-			con.sendUTF(msg.utf8Data);
-		}
+		console.log('message')
+		con.send(msg)
 	});
+});
 
-	con.on('close',(reason,desc)=>{
-		console.log('disconnected')
-	});
+http_server.on('upgrade',(req,socket,head)=>{
+	ws_server.handleUpgrade(req,socket,head,ws=>{
+		ws_server.emit('connection',ws,req);
+	})
 });

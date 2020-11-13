@@ -17,9 +17,17 @@ export function connect(){//connect to server
 	};
 	con.onmessage=evt=>{
 		console.log(evt);
-		queue.push({type:'data',data:JSON.parse(evt.data)});
+		queue.push({type:'message',data:JSON.parse(evt.data)});
 	};
+	return con;
 }
 
-export function send(msg){con.send(JSON.stringify(msg))}
-export function read(){var output=queue;queue=[];return output;}
+export function write(msg){
+	con.send(JSON.stringify(msg));
+}
+export function read(){
+	console.log('read')
+	var output=queue;
+	queue=[];
+	return output;
+}

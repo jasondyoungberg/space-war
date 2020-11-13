@@ -26,8 +26,8 @@ export function write(msg){
 	con.send(JSON.stringify(msg));
 }
 export function read(){
-	console.log('read')
 	var output=queue;
 	queue=[];
 	return output;
 }
+export function queue(n){queue.push(n)}

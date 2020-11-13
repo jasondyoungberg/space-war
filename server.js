@@ -5,7 +5,7 @@ const fs = require('fs');
 
 //webserver
 var http_server = http.createServer((req,res)=>{
-	//console.log(req.url)
+	console.log(`http://${req.headers.host}${req.url}`)
 	var url = 'public/'+req.url.replace(/^\/|\/$/g,'');
 	if(url.split('.').length==1)url+='index.html';
 	fs.readFile(url,(err,data)=>{
@@ -27,8 +27,6 @@ ws_server = new ws.Server({noServer:true});
 var clients = []
 
 ws_server.on('connection',con=>{
-	console.log('ws');
-
 	con.send(JSON.stringify({
 		type:"welcome",
 		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')

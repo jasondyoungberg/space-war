@@ -16,7 +16,6 @@ export function connect(){//connect to server
 		queue.push({type:'error',data:evt});
 	};
 	con.onmessage=evt=>{
-		console.log(evt);
 		queue.push({type:'message',data:JSON.parse(evt.data)});
 	};
 	return con;
@@ -30,4 +29,4 @@ export function read(){
 	queue=[];
 	return output;
 }
-export function queue(n){queue.push(n)}
+export function requeue(n){queue.push(n)}

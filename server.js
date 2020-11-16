@@ -1,12 +1,20 @@
-const ws = require('ws');
 const mimelite = require('mime/lite');
 const http = require('http');
+const ws = require('ws');
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('config.json'))
+const dateformat = require('dateformat');
+
+dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss.l'
+const config = JSON.parse(fs.readFileSync('config.json'));
+
+
+function log(msg){
+	console.log(`[${dateformat(new Date())}] ${msg}`)
+}
 
 //webserver
 var http_server = http.createServer((req,res)=>{
-	console.log(`http://${req.headers.host}${req.url}`)
+	if(config.log.http)log(`http://${req.headers.host}${req.url}`);
 	var url = 'public/'+req.url.replace(/^\/|\/$/g,'');
 	if(url.split('.').length==1)url+='index.html';
 	fs.readFile(url,(err,data)=>{
@@ -28,13 +36,13 @@ ws_server = new ws.Server({noServer:true});
 var clients = []
 
 ws_server.on('connection',con=>{
+	if(config.log.ws)log('connected');
 	con.send(JSON.stringify({
 		type:"welcome",
 		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
 	}));
 
 	con.on('message',msg=>{
-		console.log('message')
 		con.send(msg)
 	});
 });

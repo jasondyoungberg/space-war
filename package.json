@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jasondyoungberg/space-war/issues"
   },
-  "homepage": "https://github.com/jasondyoungberg/space-war#readme"
+  "homepage": "https://github.com/jasondyoungberg/space-war#readme",
+  "dependencies": {
+    "dateformat": "^3.0.3"
+  }
 }

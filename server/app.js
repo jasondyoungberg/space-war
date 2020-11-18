@@ -23,7 +23,7 @@ function log(msg){
 
 var clients = []
 wss.on('connection',con=>{
-	if(config.log.ws)log('Connection from ');
+	if(config.log.ws)log('New Connection');
 	con.send(JSON.stringify({
 		type:"welcome",
 		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
@@ -34,8 +34,8 @@ wss.on('connection',con=>{
 	});
 });
 
-server.on('upgrade',(req,socket,head)=>{
-	wss.handleUpgrade(req,socket,head,ws=>{
+server.on('upgrade',(req,soc,head)=>{
+	wss.handleUpgrade(req,soc,head,ws=>{
 		wss.emit('connection',ws,req);
 	})
 });

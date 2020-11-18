@@ -4,6 +4,7 @@
 	"log":{
 		"http":true,
 		"ws":true,
-		"hack":true
+		"hack":true,
+		"file":"log.txt"
 	}
 }

@@ -23,7 +23,9 @@ server.listen(config.port);
 const dateformat = require('dateformat');
 dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss'
 function log(msg){
-	console.log(`[${dateformat(new Date())}] ${msg}`)
+	var text = `[${dateformat(new Date())}] ${msg}`;
+	console.log(text);
+	fs.appendFile(config.log.file,text+'\n',()=>{});
 }
 
 var clients = []

@@ -13,6 +13,11 @@ app.use((req,res,next)=>{
 app.enable('etag');
 const server = http.createServer(app);
 const wss = new ws.Server({noServer:true});
+server.on('upgrade',(req,soc,head)=>{
+	wss.handleUpgrade(req,soc,head,ws=>{
+		wss.emit('connection',ws,req);
+	})
+});
 server.listen(config.port);
 
 const dateformat = require('dateformat');
@@ -32,10 +37,4 @@ wss.on('connection',con=>{
 	con.on('message',msg=>{
 		con.send(msg)
 	});
-});
-
-server.on('upgrade',(req,soc,head)=>{
-	wss.handleUpgrade(req,soc,head,ws=>{
-		wss.emit('connection',ws,req);
-	})
 });

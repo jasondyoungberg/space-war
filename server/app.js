@@ -6,7 +6,11 @@ const config = JSON.parse(fs.readFileSync('config.json'));
 
 const express = require('express');
 const app = express();
-app.use(express.static('public'));
+app.use((req,res,next)=>{
+	if(config.log.http)log(`http://${req.hostname}${req.url}`);
+	next();
+},express.static('public'));
+app.enable('etag');
 const server = http.createServer(app);
 const wss = new ws.Server({noServer:true});
 server.listen(config.port);

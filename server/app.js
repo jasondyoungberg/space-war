@@ -16,7 +16,7 @@ const wss = new ws.Server({noServer:true});
 server.listen(config.port);
 
 const dateformat = require('dateformat');
-dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss.l'
+dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss'
 function log(msg){
 	console.log(`[${dateformat(new Date())}] ${msg}`)
 }

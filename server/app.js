@@ -7,7 +7,7 @@ const config = JSON.parse(fs.readFileSync('config.json'));
 const express = require('express');
 const app = express();
 app.use((req,res,next)=>{
-	if(config.log.http)log(`http://${req.hostname}${req.url}`);
+	log(`http://${req.hostname}${req.url}`,'http');
 	next();
 },express.static('public'));
 app.enable('etag');
@@ -22,15 +22,15 @@ server.listen(config.port);
 
 const dateformat = require('dateformat');
 dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss'
-function log(msg){
-	var text = `[${dateformat(new Date())}] ${msg}`;
-	console.log(text);
-	fs.appendFile(config.log.file,text+'\n',()=>{});
+function log(msg,type){
+	var text = `[${dateformat(new Date())}] ${type}: ${msg}`;
+	if(config.log.console[type])console.log(text);
+	if(config.log.file[type])fs.appendFile(config.log.file.path,text+'\n',()=>{});
 }
 
 var clients = []
 wss.on('connection',con=>{
-	if(config.log.ws)log('New Connection');
+	log('New Connection','ws');
 	con.send(JSON.stringify({
 		type:"welcome",
 		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')

@@ -2,9 +2,18 @@
 	"port":80,
 	"anticheat":false,
 	"log":{
-		"http":true,
-		"ws":true,
-		"hack":true,
-		"file":"log.txt"
+		"console":{
+			"http":true,
+			"ws":true,
+			"hack":true,
+			"error":true
+		},
+		"file":{
+			"http":false,
+			"ws":true,
+			"hack":true,
+			"error":true,
+			"path":"log.txt"
+		}
 	}
 }

@@ -3,10 +3,12 @@ const http = require('http');
 const ws = require('ws');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('config.json'));
+const crypto = require('crypto');
 
+//create server
 const express = require('express');
 const app = express();
-app.use((req,res,next)=>{
+app.use((req,res,next)=>{//log request
 	log(`http://${req.hostname}${req.url}`,'http');
 	next();
 },express.static('public'));
@@ -22,21 +24,28 @@ server.listen(config.port);
 
 const dateformat = require('dateformat');
 dateformat.masks.default = 'UTC:dd-mm-yyyy HH:MM:ss'
-function log(msg,type){
+function log(msg,type){//log message
 	var text = `[${dateformat(new Date())}] ${type}: ${msg}`;
 	if(config.log.console[type])console.log(text);
 	if(config.log.file[type])fs.appendFile(config.log.file.path,text+'\n',()=>{});
 }
 
 var clients = []
-wss.on('connection',con=>{
-	log('New Connection','ws');
-	con.send(JSON.stringify({
-		type:"welcome",
-		data:[...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
-	}));
-
-	con.on('message',msg=>{
-		con.send(msg)
+wss.on('connection',con=>{//handle websocket
+	con.on('message',data=>{
+		var msg = JSON.parse(data);
+		if(msg.type='req'){//Client requesting data
+			if(msg.data=='token'){//Client requesting token
+				crypto.randomBytes(24,(err,buf)=>{
+					if(err)log(err,'err');
+					var token = buf.toString('base64');
+					log(`{${token}} New connection`,'ws');
+					con.send(JSON.stringify({
+						type:'token',
+						data:token
+					}));
+				});
+			}
+		}
 	});
 });

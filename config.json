@@ -6,13 +6,13 @@
 			"http":true,
 			"ws":true,
 			"hack":true,
-			"error":true
+			"err":true
 		},
 		"file":{
 			"http":false,
 			"ws":true,
 			"hack":true,
-			"error":true,
+			"err":true,
 			"path":"log.txt"
 		}
 	}

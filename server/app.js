@@ -33,19 +33,37 @@ function log(msg,type){//log message
 var clients = []
 wss.on('connection',con=>{//handle websocket
 	con.on('message',data=>{
-		var msg = JSON.parse(data);
-		if(msg.type='req'){//Client requesting data
-			if(msg.data=='token'){//Client requesting token
-				crypto.randomBytes(24,(err,buf)=>{
-					if(err)log(err,'err');
-					var token = buf.toString('base64');
-					log(`{${token}} New connection`,'ws');
+		try{
+			var msg = JSON.parse(data);
+			if(msg.type='req'){//Client requesting data
+				if(msg.data=='token'){//Client requesting token
+					crypto.randomBytes(24,(err,buf)=>{
+						if(err)log(err,'err');
+						var token = buf.toString('base64');
+						log(`{${token}} New connection`,'ws');
+						con.send(JSON.stringify({
+							echo:msg,
+							type:'token',
+							data:token
+						}));
+					});
+					return;
+				}
+				if(msg.data=='ping'){//Client requesting ping
 					con.send(JSON.stringify({
-						type:'token',
-						data:token
+						echo:msg,
+						type:'ping',
+						data:Date.now()
 					}));
-				});
+					return;
+				}
+				if(msg.data=='gamestate'){//Client requesting gamestate
+					//TODO
+				}
 			}
+		}catch(err){
+			log(err,'err');
+			con.send('{"type":"err"}');
 		}
 	});
 });

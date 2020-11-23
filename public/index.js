@@ -110,6 +110,8 @@ function load(){
 
 	t=0;
 	function render(){//ran every frame
+		requestAnimationFrame(render);
+		stats.begin();
 		if(mode=='menu'){
 			Menu.loop();
 			if(Menu.mode!='menu'){
@@ -143,11 +145,8 @@ function load(){
 				if(mode=='main')Main.init();
 			}
 		}
-		
-		requestAnimationFrame(render);
-		stats.begin();t++;
 		renderer.render(scene,camera);
-		stats.end();
+		stats.end();t++;
 	}
 	ready_loop = setInterval(()=>{//wait until everything is loaded
 		if(Model.ready){

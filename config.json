@@ -3,7 +3,7 @@
 	"anticheat":false,
 	"log":{
 		"console":{
-			"http":false,
+			"http":true,
 			"ws":true,
 			"hack":true,
 			"err":true

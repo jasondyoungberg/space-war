@@ -1,4 +1,4 @@
-//Attach all needed modules to window for debuging
+//Attach all needed modules to window for debugging
 import * as THREE from '/lib/three.js';
 
 import * as Model from '/helper/model.js';

@@ -112,12 +112,25 @@ function load(){
 	function render(){//ran every frame
 		requestAnimationFrame(render);
 		stats.begin();
+		if(mode=='lobby'){
+			Lobby.loop();
+			if(Lobby.mode!='lobby'){
+				Lobby.exit();
+				mode = Lobby.mode;
+
+				if(mode=='lobby')Lobby.init();
+				if(mode=='menu')Menu.init();
+				if(mode=='single')Single.init();
+				if(mode=='main')Main.init();
+			}
+		}
 		if(mode=='menu'){
 			Menu.loop();
 			if(Menu.mode!='menu'){
 				Menu.exit();
 				mode = Menu.mode;
 
+				if(mode=='lobby')Lobby.init();
 				if(mode=='menu')Menu.init();
 				if(mode=='single')Single.init();
 				if(mode=='main')Main.init();
@@ -129,6 +142,7 @@ function load(){
 				Single.exit();
 				mode = Single.mode;
 
+				if(mode=='lobby')Lobby.init();
 				if(mode=='menu')Menu.init();
 				if(mode=='single')Single.init();
 				if(mode=='main')Main.init();
@@ -140,6 +154,7 @@ function load(){
 				Main.exit();
 				mode = Main.mode;
 
+				if(mode=='lobby')Lobby.init();
 				if(mode=='menu')Menu.init();
 				if(mode=='single')Single.init();
 				if(mode=='main')Main.init();

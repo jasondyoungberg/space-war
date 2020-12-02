@@ -1,22 +1,27 @@
-//Attach all needed modules to window
+//Attach all needed modules to window for debuging
 import * as THREE from '/lib/three.js';
 
 import * as Model from '/helper/model.js';
-//import * as Player from '/helper/player.js';
+import * as Player from '/helper/player.js';
 import * as Socket from '/helper/socket.js';
 
-import * as Menu from '/Menu.js';
+import * as Lobby from '/lobby.js';
+import * as Menu from '/menu.js';
+import * as Main from '/main.js';
 import * as Single from '/single.js';
 
 window.THREE = THREE;
 
 window.Model = Model;
-//window.Player = Player;
+window.Player = Player;
 window.Socket = Socket;
 
-window.Single = Single;
+window.Lobby = Lobby;
 window.Menu = Menu;
+window.Main = Main;
+window.Single = Single;
 
+//Temporary
 function random(){
 	let u = 0, v = 0;
 	while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
@@ -28,7 +33,6 @@ function random(){
 	return num;
 }
 
-//Temporary
 window.specs = [
 	{
 		"name":'0x'+[...Array(8)].map(()=>Math.floor(Math.random()*16).toString(16)).join('').toUpperCase(),

@@ -8,5 +8,6 @@
 * [**Node.js**](https://nodejs.org/en/download/package-manager/)
 
 ## How to use
-Start `server.js`    
+Run `npm i`
+Start `server/index.js`    
 Open a web browser, and navigate to [localhost](http://localhost/) to access the website

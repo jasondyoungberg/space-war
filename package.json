@@ -2,10 +2,10 @@
   "name": "space-war",
   "version": "1.0.0",
   "description": "Online Multiplayer Space Battle Arena",
-  "main": "server.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",

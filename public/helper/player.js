@@ -1,4 +1,4 @@
-import * as model from '/model.js';
+import * as model from '/helper/model.js';
 
 export class Player {
 	constructor(username){
@@ -9,5 +9,7 @@ export class Player {
 		return this.model;
 	}
 
-	newGame({})
+	newGame(){
+		
+	}
 }

@@ -1,14 +1,14 @@
 //Attach all needed modules to window for debugging
-import * as THREE from '~/lib/three.js';
+import * as THREE from 'lib/three.js';
 
-import * as Model from '~/helper/model.js';
-import * as Player from '~/helper/player.js';
-import * as Socket from '~/helper/socket.js';
+import * as Model from 'helper/model.js';
+import * as Player from 'helper/player.js';
+import * as Socket from 'helper/socket.js';
 
-import * as Lobby from '~/lobby.js';
-import * as Menu from '~/menu.js';
-import * as Main from '~/main.js';
-import * as Single from '~/single.js';
+import * as Lobby from 'lobby.js';
+import * as Menu from 'menu.js';
+import * as Main from 'main.js';
+import * as Single from 'single.js';
 
 window.THREE = THREE;
 

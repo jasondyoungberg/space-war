@@ -1,5 +1,5 @@
-import * as THREE from '~/lib/three.js'
-import {OBJLoader} from '~/lib/OBJLoader.js'
+import * as THREE from 'lib/three.js'
+import {OBJLoader} from 'lib/OBJLoader.js'
 
 //loaders
 const obj_loader = new OBJLoader();

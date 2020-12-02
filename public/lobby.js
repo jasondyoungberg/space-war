@@ -1,5 +1,5 @@
-import * as THREE from './lib/three.js';
-import * as Model from './helper/model.js';
+import * as THREE from '~/lib/three.js';
+import * as Model from '~/helper/model.js';
 
 export var mode;
 export function init(){//When mode is switched to menu

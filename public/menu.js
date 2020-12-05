@@ -27,6 +27,10 @@ export function init(){//When mode is switched to menu
 			color.models[i]=Model.ship(mod(color.selected+i,8),type.selected);
 		}
 		selected = Model.ship(0,0);
+		window.choice = {
+			type:type.selected,
+			color:color.selected
+		}
 	}
 	{//set position and rotation of all objects
 		camera.position.set(0,0,0);
